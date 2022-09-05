@@ -22,10 +22,46 @@ export default function Example({ params }) {
 }
 
 const QUERY = gql`
- query productQuery($handle: String!) {
+ query product($handle: String!) {
    product(handle: $handle) {
      id
      title
+     handle
+     vendor
+     descriptionHtml
+     media(first: 10) {
+       nodes {
+         ... on MediaImage {
+           mediaContentType
+           image {
+             id
+             url
+             altText
+             width
+             height
+           }
+         }
+       }
+     }
+     variants(first: 250) {
+       nodes {
+         id
+         title
+         availableForSale
+         priceV2 {
+           currencyCode
+           amount
+         }
+         compareAtPriceV2 {
+           currencyCode
+           amount
+         }
+         selectedOptions {
+           name
+           value
+         }
+       }
+     }
    }
  }
- `;
+`;
