@@ -2,6 +2,7 @@
 
 import { useShopQuery, gql } from '@shopify/hydrogen';
 import Layout from '../../components/Layout.server';
+import ProductDetails from '../../components/ProductDetails.client';
 
 export default function Example({ params }) {
   const { handle } = params;
@@ -15,7 +16,7 @@ export default function Example({ params }) {
 
   return (
     <Layout>
-      <p>Hello World! This is the product page for {handle}</p>
+      <ProductDetails product={data.product} />
     </Layout>
   );
 }
