@@ -8,6 +8,8 @@ import {
   useProductOptions,
 } from '@shopify/hydrogen';
 
+import ProductOptions from './ProductOptions.client';
+
 export default function ProductDetails({ product }) {
   const { title, vendor, media, descriptionHtml } = product;
   return (
@@ -41,6 +43,7 @@ function ProductForm() {
   const { selectedVariant } = useProductOptions();
   return (
     <form>
+      <ProductOptions />
       <BuyNowButton variantId={selectedVariant.id}>
         <span className="bg-black text-white inline-block rounded-sm font-medium text-center py-3 px-6 max-w-xl leading-none w-full border">
           BUY IT NOW &middot;{' '}
