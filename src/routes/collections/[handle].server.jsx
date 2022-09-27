@@ -1,5 +1,7 @@
 import { useShopQuery, gql } from '@shopify/hydrogen';
 import Layout from '../../components/Layout.server';
+import CollectionDetails from '../../components/CollectionDetails';
+
 export default function Collections({ params }) {
   const { handle } = params;
   const { data } = useShopQuery({
@@ -11,7 +13,7 @@ export default function Collections({ params }) {
   console.log(data);
   return (
     <Layout>
-      <h1>Welcome to collections page: {data.collection.title}</h1>
+      <CollectionDetails collection={data.collection} />
     </Layout>
   );
 }
